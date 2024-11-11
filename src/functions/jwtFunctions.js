@@ -1,7 +1,21 @@
-let jwtSecretKey = process.env.JWT_SECRET_KEY;
+require("dotenv").config();
+const jwt = require("jsonwebtoken")
 
-async function generateJWT(userId, username, roles = null) {
+let jwtSecretKey = `${process.env.JWT_SECRET_KEY}`;
 
+function generateJWT(userId, username, roles = null) {
+
+    return jwt.sign(
+        {
+        userId: userId,
+        username: username,
+        roles: roles
+        },
+        jwtSecretKey,
+        {
+            expiresIn: '7d'
+        }
+    )
 }
 
 async function decodeJWT(tokenToDecode) {
