@@ -1,7 +1,7 @@
-const { dbConnect } = require("./functions/dbFunctions.js");
-const { app } = require("./server.js");
 
 require("dotenv").config();
+const { dbConnect } = require("./functions/dbFunctions.js");
+const { app } = require("./server.js");
 
 const PORT = process.env.PORT || 8080;
 

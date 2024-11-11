@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const { User } = require("./models/UserModel");
-const { generateJWT } = require("./functions/jwtFunctions");
+const { generateJWT, validateUserAuth } = require("./functions/jwtFunctions");
 
 const app = express();
 
@@ -35,6 +35,12 @@ app.post("/signup", async (request, response) => {
             id: newUser.id,
             username: newUser.username
         }
+    })
+})
+
+app.get("/protectedRoute", validateUserAuth, (request, response) => {
+    response.json({
+        message: "You can see prtected content because you are signed in"
     })
 })
 
