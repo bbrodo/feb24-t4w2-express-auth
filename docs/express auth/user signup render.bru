@@ -1,0 +1,18 @@
+meta {
+  name: user signup render
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8080/signup
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "adfasda",
+    "password": "password"
+  }
+}
